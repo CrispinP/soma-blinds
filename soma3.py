@@ -5,9 +5,16 @@ import binascii
 
 class SomaBlind:
     def __init__(self, mac):
-        self._peripheral = Peripheral(mac, "random")
+        self._mac = mac
+        self.connect()
+
+    def connect(self):
+        self._peripheral = Peripheral(self._mac, "random")
         self._batt_service = self._peripheral.getServiceByUUID("0000180f-0000-1000-8000-00805f9b34fb")
         self._motor_service = self._peripheral.getServiceByUUID("00001861-b87f-490c-92cb-11ba5ea5167c")
+
+    def disconnect(self):
+        self._peripheral.disconnect()
 
     def get_position(self):
         motor = self._get_motor_characteristic()
