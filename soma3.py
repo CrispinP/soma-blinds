@@ -13,6 +13,10 @@ class SomaBlind:
         self._batt_service = self._peripheral.getServiceByUUID("0000180f-0000-1000-8000-00805f9b34fb")
         self._motor_service = self._peripheral.getServiceByUUID("00001861-b87f-490c-92cb-11ba5ea5167c")
 
+#MOTOR_MOVE_UP = 69
+#MOTOR_MOVE_DOWN = 96
+#MOTOR_MOVE_STOP = 0
+
     def disconnect(self):
         self._peripheral.disconnect()
 
@@ -41,3 +45,5 @@ class SomaBlind:
     def _get_motor_characteristic(self):
         return self._motor_service.getCharacteristics("00001526-b87f-490c-92cb-11ba5ea5167c")[0]
 
+   
+		
